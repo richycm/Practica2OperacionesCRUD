@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 app = Flask(__name__)
+
+app.config['JWT_SECRET_KEY'] = 'super-secret-key'
+jwt = JWTManager(app)
 
 # Configuración DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -88,9 +92,12 @@ def login():
 
     if user and bcrypt.check_password_hash(user.password, password):
 
+        access_token = create_access_token(identity=str(user.id))
+
         return jsonify({
             "status": "success",
             "message": "Login exitoso",
+            "access_token": access_token,
             "user_id": user.id,
             "username": user.username
         }), 200
@@ -102,6 +109,7 @@ def login():
 
 
 @app.route('/users', methods=['GET'])
+@jwt_required()
 def get_users():
 
     users = User.query.all()
@@ -110,6 +118,7 @@ def get_users():
 
 
 @app.route('/users/<int:user_id>/username', methods=['PUT'])
+@jwt_required()
 def update_username(user_id):
 
     data = request.get_json()
@@ -141,6 +150,7 @@ def update_username(user_id):
 # CAMBIAR PASSWORD
 # ----------------------------
 @app.route('/users/<int:user_id>/password', methods=['PUT'])
+@jwt_required()
 def update_password(user_id):
 
     data = request.get_json()
@@ -178,6 +188,7 @@ def update_password(user_id):
 
 
 @app.route('/users/<int:user_id>', methods=['DELETE'])
+@jwt_required()
 def delete_user(user_id):
 
     user = User.query.get(user_id)
