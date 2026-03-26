@@ -14,17 +14,20 @@
 
 **👨‍🏫 Profesor:** Gabriel Hurtado Avilés
 
-**👨‍🎓 Alumno:** Ricardo Carmona Martínez
-
+### 👨‍🎓 ALUMNOS:
+* **Blanco López Juan Antonio**
+* **Carmona Martínez Ricardo**
+* **Muciño Torres Diego Ivan - 2023630390**
+  
 **👥 Grupo:** 7CV4
 
-**📅 Fecha de entrega:** 06 de marzo de 2026
+**📅 Fecha de entrega:** 26 de marzo de 2026
 
 </p>
 
 ---
 
-<h1 align="center">📱 Tarea 3 - Backend de la Práctica 2</h1>
+<h1 align="center">📱 Práctica 2 - Aplicación móvil básica para operaciones CRUD con un servicio REST</h1>
 
 
 ---
@@ -69,7 +72,7 @@ TAREA3-FLASK-ANDROID/
 * **Lenguaje:** Python 3.9
 * **Framework:** Flask
 * **ORM & Base de Datos:** Flask-SQLAlchemy + SQLite
-* **Seguridad:** Flask-Bcrypt (Hashing de contraseñas)
+* **Seguridad:** Flask-Bcrypt (Hashing de contraseñas) y flask-jwt-extended (Tokens)
 * **Despliegue:** Docker y Docker Compose
 
 ## 📱 Frontend (Android)
@@ -256,9 +259,9 @@ Si el contenedor Docker se detiene:
 
 ---
 
-# 🧑‍💻 Autor
+# Conclusiones
+Si bien la práctica tenia sus dificultades, la ayuda de la tarea 3 nos permitió adelantar una parte importante de este trabajo, el cual era el tema del backend, el cual requirió del uso de Docker para un correcto funcionamiento y de ahí ir agregando diferentes funcionalidad, como por ejemplo la seguridad mediante la encriptación de la contraseña o los tokens para mantener una buena sesión. Por esta parte, me parece que hubo un alto aprendizaje, dado que las bases de datos son importantes para casi todo, por lo que comprender los datos principales y realizarlos, si bien conllevo complicaciones entre librerías, como irlo acomodando y corroborar que cumpla lo que hace, nos permitió aprender lo mas básico y con esto se podrá aplicar en futuras aplicaciones.
 
-**Ricardo Carmona Martínez**
-Estudiante de Ingeniería en Sistemas Computacionales
+---
 
 Escuela Superior de Cómputo — IPN
