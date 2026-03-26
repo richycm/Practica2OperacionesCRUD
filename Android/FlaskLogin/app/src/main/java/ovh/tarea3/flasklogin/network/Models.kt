@@ -24,7 +24,8 @@ data class UsernameRequest(
 )
 
 data class AuthResponse(
-    @SerializedName("message") val message: String
+    @SerializedName("message") val message: String,
+    @SerializedName("access_token") val token: String? = null
 )
 
 data class HelloResponse(

@@ -37,7 +37,7 @@ fun UsersScreen(onBack: () -> Unit) {
         scope.launch {
             isLoading = true
             try {
-                val response = RetrofitClient.apiService.getUsers()
+                val response = RetrofitClient.getClient(context).getUsers()
                 if (response.isSuccessful) {
                     users = response.body() ?: emptyList()
                 } else {
@@ -84,7 +84,7 @@ fun UsersScreen(onBack: () -> Unit) {
                             onDelete = {
                                 scope.launch {
                                     try {
-                                        val response = RetrofitClient.apiService.deleteUser(user.id)
+                                        val response = RetrofitClient.getClient(context).deleteUser(user.id)
                                         if (response.isSuccessful) {
                                             Toast.makeText(context, "Usuario eliminado", Toast.LENGTH_SHORT).show()
                                             fetchUsers()
@@ -109,7 +109,7 @@ fun UsersScreen(onBack: () -> Unit) {
                 onConfirm = { newUsername ->
                     scope.launch {
                         try {
-                            val response = RetrofitClient.apiService.updateUsername(
+                            val response = RetrofitClient.getClient(context).updateUsername(
                                 user.id,
                                 UsernameRequest(newUsername)
                             )
@@ -135,7 +135,7 @@ fun UsersScreen(onBack: () -> Unit) {
                 onConfirm = { oldPassword, newPassword, confirmPassword ->
                     scope.launch {
                         try {
-                            val response = RetrofitClient.apiService.updatePassword(
+                            val response = RetrofitClient.getClient(context).updatePassword(
                                 user.id,
                                 ChangePasswordRequest(oldPassword, newPassword, confirmPassword)
                             )

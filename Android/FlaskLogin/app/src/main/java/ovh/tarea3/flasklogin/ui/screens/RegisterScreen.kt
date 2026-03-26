@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 import ovh.tarea3.flasklogin.network.ErrorUtils
 import ovh.tarea3.flasklogin.network.RetrofitClient
 import ovh.tarea3.flasklogin.network.UserRequest
+import androidx.compose.ui.platform.LocalContext
+
 
 @Composable
 fun RegisterScreen(
@@ -28,6 +30,7 @@ fun RegisterScreen(
     var showSuccessScreen by remember { mutableStateOf(false) }
     
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     if (showSuccessScreen) {
         // Pantalla de Usuario Creado
@@ -131,7 +134,7 @@ fun RegisterScreen(
                     }
                     scope.launch {
                         try {
-                            val response = RetrofitClient.apiService.register(
+                            val response = RetrofitClient.getClient(context).register(
                                 UserRequest(username, password, passwordConfirm)
                             )
                             if (response.isSuccessful) {

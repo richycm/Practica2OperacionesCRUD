@@ -12,6 +12,8 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import ovh.tarea3.flasklogin.network.ChangePasswordRequest
 import ovh.tarea3.flasklogin.network.RetrofitClient
+import androidx.compose.ui.platform.LocalContext
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,6 +28,7 @@ fun ChangePasswordScreen(
     var errorMessage by remember { mutableStateOf("") }
     var successMessage by remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -92,7 +95,7 @@ fun ChangePasswordScreen(
                     }
                     scope.launch {
                         try {
-                            val response = RetrofitClient.apiService.updatePassword(
+                            val response = RetrofitClient.getClient(context).updatePassword(
                                 userId,
                                 ChangePasswordRequest(oldPassword, newPassword, confirmPassword)
                             )

@@ -33,7 +33,7 @@ fun LoginScreen(
     LaunchedEffect(Unit) {
         while(true) {
             try {
-                val response = RetrofitClient.apiService.getHello()
+                val response = RetrofitClient.getClient(context).getHello()
                 if (response.isSuccessful) {
                     apiStatusMessage = response.body()?.message ?: "API Funcionando"
                     isApiOnline = true
@@ -98,8 +98,15 @@ fun LoginScreen(
             onClick = {
                 scope.launch {
                     try {
-                        val response = RetrofitClient.apiService.login(UserRequest(username, password))
+                        val response = RetrofitClient.getClient(context).login(UserRequest(username, password))
                         if (response.isSuccessful) {
+                            val token = response.body()?.token
+
+                            if (token != null) {
+                                val prefs = context.getSharedPreferences("auth", android.content.Context.MODE_PRIVATE)
+                                prefs.edit().putString("token", token).apply()
+                            }
+
                             onLoginSuccess(username)
                         } else {
                             errorMessage = ErrorUtils.getFriendlyErrorMessage(response = response)
