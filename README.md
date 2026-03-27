@@ -169,13 +169,10 @@ La interfaz de usuario ha sido desarrollada íntegramente con **Jetpack Compose*
     * **Edición de nombres:** Peticiones de tipo `PUT`.
     * **Actualización de seguridad:** Cambio de contraseñas mediante `PUT`.
     * **Eliminación de registros:** Operaciones `DELETE` con actualización inmediata del estado de la lista.
- 
 
-# Implementación del Patrón ViewModel:
-◦ Se creó LoginViewModel.kt para separar la lógica de negocio de la interfaz de usuario.
-◦ El estado de la pantalla (usuario, contraseña, errores, carga) ahora se gestiona de forma reactiva, lo que permite que los datos sobrevivan a cambios de configuración (como la rotación de pantalla).
-# Refactorización de la UI con Jetpack Compose:
-◦ LoginScreen.kt ahora es una función puramente declarativa que observa el estado del ViewModel.
+* **Implementación del Patrón ViewModel:**
+◦ El estado de la pantalla (usuario, contraseña, errores, carga) gestiona de forma reactiva, lo que permite que los datos sobrevivan a cambios de configuración (como la rotación de pantalla).
+* **Refactorización de la UI con Jetpack Compose:**
 ◦ Se añadió un indicador de carga visual (CircularProgressIndicator) durante el proceso de autenticación para mejorar la experiencia de usuario (UX).
 
 
