@@ -16,7 +16,7 @@
 
 ### 👨‍🎓 ALUMNOS:
 * **Blanco López Juan Antonio - 2023630890**
-* **Carmona Martínez Ricardo**
+* **Carmona Martínez Ricardo - 2023630052**
 * **Muciño Torres Diego Ivan - 2023630390**
   
 **👥 Grupo:** 7CV4
